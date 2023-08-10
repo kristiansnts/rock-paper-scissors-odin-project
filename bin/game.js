@@ -11,15 +11,17 @@ function getComputerChoice() {
     return choice[random];
 }
 
-function getPlayerChoice() {
-    const player = prompt("write your input: rock/paper/scissors").toLowerCase();
-    return player;
-}
+const options = document.querySelectorAll('.option');
 
-function playRound() {
+options.forEach(option => option.addEventListener('click', function(){
+    let playerChoice = option.id;
+    game(playerChoice);
+}));
+
+
+function playRound(playerChoice) {
     const computer = getComputerChoice();
-    const player = getPlayerChoice();
-
+    const player = playerChoice;
     if(player == computer) {
         return 'DRAW'
     } else if (computer == 'rock' && player == 'paper') {
@@ -34,10 +36,10 @@ function playRound() {
 }
 
 let point = 0;
-function game() {
+function game(playerChoice) {
     let n = getRound();
     for(let i = 1; i <= n; i++) {
-        result = playRound();
+        result = playRound(playerChoice);
         confirm(`${result}`)
         if(result == 'WIN') {
             point += 1
