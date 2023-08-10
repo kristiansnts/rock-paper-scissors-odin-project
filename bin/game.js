@@ -1,3 +1,10 @@
+function getRound(){
+    const url_string = window.location.href;
+    const url = new URL(url_string);
+    const round = url.searchParams.get("round");
+    return round;
+}
+
 function getComputerChoice() {
     const choice = ['rock', 'paper', 'scissors'];
     const random = Math.floor(Math.random()*3);
@@ -26,10 +33,9 @@ function playRound() {
     }
 }
 
-// let n = 5;
-
 let point = 0;
 function game() {
+    let n = getRound();
     for(let i = 1; i <= n; i++) {
         result = playRound();
         confirm(`${result}`)
