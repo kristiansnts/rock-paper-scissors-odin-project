@@ -28,6 +28,13 @@ a {
     margin: 0 auto;
 }
 
+#app p a {
+    display: inline;
+    color: white;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
 #app h1 {
     font-size: 3rem;
     margin: 20px 0;
