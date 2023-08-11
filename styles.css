@@ -24,12 +24,12 @@ a {
 #app {
     padding: 20px 0;
     color: white;
-    max-width: 500px;
+    max-width: 300px;
     margin: 0 auto;
 }
 
 #app h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin: 20px 0;
 }
 
@@ -41,6 +41,7 @@ a {
 
 #app img {
     margin: 30px auto;
+    width: 30%;
 }
 
 #app .round .btn {

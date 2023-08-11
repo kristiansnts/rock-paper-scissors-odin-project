@@ -35,15 +35,66 @@ function playRound(playerChoice) {
     }
 }
 
-let point = 0;
+function showResult(result, text){
+    if(result == 'DRAW'){
+        text.innerHTML = `
+            <h1 class="title">It's Draw <img src="../img/draw-icon.png"></h1>
+            <p class="score">Score: ${pointPlayer} </p>
+        `
+    } else if (result == 'LOSE') {
+        text.innerHTML = `
+            <h1 class="title">You Lose <img src="../img/lose-icon.png"></h1>
+            <p class="score">Score: ${pointPlayer} </p>
+        `
+    } else {
+        text.innerHTML = `
+            <h1 class="title">You Win <img src="../img/win-icon.png"></h1>
+            <p class="score">Score: ${pointPlayer} </p>
+        `
+    }
+}
+
+function resultUI(result, pointPlayer, pointComp){
+    const text = document.querySelector('.text');
+    console.log(pointComp)
+    showResult(result, text);
+    if(pointComp == 5){
+        text.innerHTML = `
+        <h1 class="title">Computer Win <img src="../img/lose-icon.png"></h1>
+        <a href="" class="btn play-again">Play Again</a>
+    `
+    } else if(pointPlayer == 5) {
+        text.innerHTML = `
+        <h1 class="title">You Win <img src="../img/win-icon.png"></h1>
+        <a href="" class="btn play-again">Play Again</a>
+    `
+    }
+}
+
+let pointComp = 0;
+let pointPlayer = 0;
 function game(playerChoice) {
     let n = getRound();
     for(let i = 1; i <= n; i++) {
-        result = playRound(playerChoice);
-        confirm(`${result}`)
-        if(result == 'WIN') {
-            point += 1
+        if(i <= n){
+            result = playRound(playerChoice);
+            if(result == 'WIN'){
+                pointPlayer += 1;
+            } else if (result == 'LOSE'){
+                pointComp += 1;
+            } else {
+                pointComp += 0;
+                pointPlayer += 0;
+            }
+            resultUI(result, pointPlayer, pointComp);
+        } else{
+            alert('balik')
         }
     }
-    confirm(`You WIN ${point} times`);
 }
+
+window.addEventListener('click', function(e){
+    if(e.target.classList.contains('play-again')){
+        location.href = `bin/game.html`;
+    }
+})
