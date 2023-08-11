@@ -21,6 +21,8 @@ options.forEach(option => option.addEventListener('click', function(){
 
 function playRound(playerChoice) {
     const computer = getComputerChoice();
+    const compImg = document.querySelector('.comp-img');
+    compImg.setAttribute("src", `../img/${computer}.png`);
     const player = playerChoice;
     if(player == computer) {
         return 'DRAW'
