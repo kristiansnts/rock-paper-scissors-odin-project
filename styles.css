@@ -29,7 +29,7 @@ a {
 }
 
 #app h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin: 20px 0;
 }
 
@@ -44,7 +44,7 @@ a {
     width: 30%;
 }
 
-#app .round .btn {
+#app .round .button {
     cursor: pointer;
     padding: 15px 30px;
     margin: 10px 0;
@@ -53,7 +53,7 @@ a {
     border-radius: 10px;
 }
 
-#app .round .btn:hover {
+#app .round .button:hover {
     background-color: #9C27B0;
     box-shadow: 1px 1px 3px rgba(255,255,255,0.6);
     color: white;

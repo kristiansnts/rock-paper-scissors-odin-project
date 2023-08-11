@@ -1,10 +1,3 @@
-function getRound(){
-    const url_string = window.location.href;
-    const url = new URL(url_string);
-    const round = url.searchParams.get("round");
-    return round;
-}
-
 function getComputerChoice() {
     const choice = ['rock', 'paper', 'scissors'];
     const random = Math.floor(Math.random()*3);
@@ -41,34 +34,33 @@ function showResult(result, text){
     if(result == 'DRAW'){
         text.innerHTML = `
             <h1 class="title">It's Draw <img src="../img/draw-icon.png"></h1>
-            <p class="score">Score: ${pointPlayer} </p>
+            <p class="score">Player Score: ${pointPlayer} | Computer Score: ${pointComp} </p>
         `
     } else if (result == 'LOSE') {
         text.innerHTML = `
             <h1 class="title">You Lose <img src="../img/lose-icon.png"></h1>
-            <p class="score">Score: ${pointPlayer} </p>
+            <p class="score">Player Score: ${pointPlayer} | Computer Score: ${pointComp} </p>
         `
     } else {
         text.innerHTML = `
             <h1 class="title">You Win <img src="../img/win-icon.png"></h1>
-            <p class="score">Score: ${pointPlayer} </p>
+            <p class="score">Player Score: ${pointPlayer} | Computer Score: ${pointComp} </p>
         `
     }
 }
 
 function resultUI(result, pointPlayer, pointComp){
     const text = document.querySelector('.text');
-    console.log(pointComp)
     showResult(result, text);
     if(pointComp == 5){
         text.innerHTML = `
         <h1 class="title">Computer Win <img src="../img/lose-icon.png"></h1>
-        <a href="" class="btn play-again">Play Again</a>
+        <a href="" class="button play-again">Play Again</a>
     `
     } else if(pointPlayer == 5) {
         text.innerHTML = `
         <h1 class="title">You Win <img src="../img/win-icon.png"></h1>
-        <a href="" class="btn play-again">Play Again</a>
+        <a href="" class="button play-again">Play Again</a>
     `
     }
 }
@@ -76,7 +68,7 @@ function resultUI(result, pointPlayer, pointComp){
 let pointComp = 0;
 let pointPlayer = 0;
 function game(playerChoice) {
-    let n = getRound();
+    let n = 1;
     for(let i = 1; i <= n; i++) {
         if(i <= n){
             result = playRound(playerChoice);
@@ -89,8 +81,6 @@ function game(playerChoice) {
                 pointPlayer += 0;
             }
             resultUI(result, pointPlayer, pointComp);
-        } else{
-            alert('balik')
         }
     }
 }
